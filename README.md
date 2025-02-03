@@ -16,7 +16,7 @@ Develop a program that counts the frequency of each word in a given text.
 
 **Example**
 
-[Example](./rsc/Captura.JPG)!
+![Example](./rsc/Captura.JPG)
 
 # Project
 This project calculate how many times a word is repeted in a word
