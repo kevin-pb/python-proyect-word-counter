@@ -54,17 +54,117 @@ The "collections" library is imported to use the "counter" method (we will use i
 
 # Collections module:
 
-1. namedtuple
+1. **namedtuple**
 
 **Description:**
 Creates tuple-like classes with named fields, allowing access by name instead of index.
 
 **Example:**
 
-"""python
+```python
 from collections import namedtuple
 
 Point = namedtuple('Point', ['x', 'y'])
 p = Point(10, 20)
 print(p.x, p.y)  # Output: 10 20
-"""
+```
+
+2. **deque**
+
+**Description:**
+Provides a double-ended queue for efficient appends and pops from both ends.
+
+**Example:**
+```python
+from collections import deque
+
+dq = deque([1, 2, 3])
+dq.append(4)        # Add to the end
+dq.appendleft(0)    # Add to the beginning
+print(dq)           # Output: deque([0, 1, 2, 3, 4])
+
+```
+
+3. **Counter**
+
+**Description:**
+A specialized dictionary for counting hashable objects.
+
+**Example:**
+
+from collections import Counter
+
+```python
+counts = Counter('abracadabra')
+print(counts)  # Output: Counter({'a': 5, 'b': 2, 'r': 2, 'c': 1, 'd': 1})
+```
+
+4. **OrderedDict**
+
+**Description:**
+A dictionary that maintains insertion order (note: starting with Python 3.7, regular dictionaries also guarantee order).
+
+**Example:**
+
+```python
+from collections import OrderedDict
+
+od = OrderedDict()
+od['a'] = 1
+od['b'] = 2
+print(od)  # Output: OrderedDict([('a', 1), ('b', 2)])
+```
+
+5. **defaultdict**
+
+**Description:**
+A dictionary that provides default values for non-existent keys.
+
+**Example:**
+
+```python
+from collections import defaultdict
+
+dd = defaultdict(int)
+dd['a'] += 1
+print(dd)  # Output: defaultdict(<class 'int'>, {'a': 1})
+```
+
+6. **ChainMap**
+
+**Description:**
+Combines multiple dictionaries or mappings, searching through them as a single unit.
+
+**Example:**
+
+```python
+from collections import ChainMap
+
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'b': 3, 'c': 4}
+cm = ChainMap(dict1, dict2)
+print(cm['b'])  # Output: 2 (first match found)
+```
+
+7. **UserDict, UserList, UserString**
+
+**Description:**
+Base classes for creating custom dictionary, list, or string-like objects by inheritance.
+
+**Example:**
+
+```python
+from collections import UserDict
+
+class MyDict(UserDict):
+    def __setitem__(self, key, value):
+        if not isinstance(value, int):
+            raise ValueError("Only integers are allowed")
+        super().__setitem__(key, value)
+
+md = MyDict()
+md['a'] = 10  # Works
+# md['b'] = 'text'  # Raises ValueError
+```
+
+The collections module is especially useful for advanced data structures and optimizing code for specific tasks. Would you like to explore any of these in detail
